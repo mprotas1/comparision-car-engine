@@ -9,6 +9,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+
+@PropertySource("classpath:car.properties")
 public class Car {
 	// here add all the entity's properties
 	@NotNull
@@ -48,13 +52,9 @@ public class Car {
 	@NotNull
 	private String transmission;
 	
-	// manual OR automatic
-	@NotNull
 	private String carType;
 	
 	@NotNull(message="is required")
-	@Size(min = 1, message="at least 1 character")
-	@Pattern(regexp="^[^0-9]+$", message="can not contain numbers")
 	// color of car
 	private String color;
 	

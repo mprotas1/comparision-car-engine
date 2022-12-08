@@ -20,27 +20,21 @@ public class CarController {
 		Car car = new Car();
 		model.addAttribute("car", car);
 		
-		return "car-form";
+		return "app";
 	}
 	
 	@RequestMapping("/processForm")
 	public String processForm(@Valid @ModelAttribute("car") Car theCar,
 			BindingResult theResult) {
-		System.out.println("Car |" + theCar.getCarCondition() + "|");
-		System.out.println("Car |" + theCar.getVehicleBrand() + "|");
-		
+	
 		System.out.println("Binding result: " + theResult);
 		if(theResult.hasErrors()) {
-			return "car-form";
+			return "app";
 		}
 		else {
 			return "car-confirmation";
 		}
-	}
-	
-	@RequestMapping("/processForm2")
-	public String processForm(@ModelAttribute("car") Car car) {
-		return "car-confirmation";
+		
 	}
 	
 	// to trim blank spaces from beggining and end of String
